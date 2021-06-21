@@ -1,10 +1,28 @@
+// Specs:
+// should render one < h1 /> first, inside of the < div />
+// should render 'Movies Page' inside of the < h1 />
+// should render a < div /> for each movie
+// should render the right content for each movie
+
 import React from 'react';
 import { movies } from '../data';
 
 const Movies = () => {
   return (
     <div>
-        {/*{code here}*/}
+      <h1>Movies Page</h1>
+      {movies.map((movie, index) => (
+        <div key={index}>
+          <h3>Name: {movie.title}</h3>
+          <p>Time: {movie.time}</p>
+          <p>Genres:</p>
+          <ul>
+            {movie.genres.map((genre, index) => (
+              <li key={index}>{genre}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
     </div>
   );
 };
